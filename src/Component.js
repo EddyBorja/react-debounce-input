@@ -25,7 +25,6 @@ export class DebounceInput extends React.PureComponent {
   static defaultProps = {
     element: 'input',
     type: 'text',
-    inputRef: ((e) => {this.inputElement = e}),
     onKeyDown: undefined,
     onBlur: undefined,
     value: undefined,
