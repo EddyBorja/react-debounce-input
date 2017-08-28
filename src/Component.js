@@ -7,6 +7,7 @@ export class DebounceInput extends React.PureComponent {
   static propTypes = {
     element: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     type: PropTypes.string,
+    inputRef: PropTypes.func,
     onChange: PropTypes.func.isRequired,
     onKeyDown: PropTypes.func,
     onBlur: PropTypes.func,
@@ -24,6 +25,7 @@ export class DebounceInput extends React.PureComponent {
   static defaultProps = {
     element: 'input',
     type: 'text',
+    inputRef: ((e) => {this.inputElement = e}),
     onKeyDown: undefined,
     onBlur: undefined,
     value: undefined,
@@ -157,6 +159,7 @@ export class DebounceInput extends React.PureComponent {
       forceNotifyOnBlur,
       onKeyDown,
       onBlur,
+      inputRef,
       ...props
     } = this.props;
 
@@ -202,6 +205,7 @@ export class DebounceInput extends React.PureComponent {
 
     return React.createElement(element, {
       ...props,
+      ref: inputRef,
       onChange: this.onChange,
       value: this.state.value,
       ...maybeOnKeyDown,
